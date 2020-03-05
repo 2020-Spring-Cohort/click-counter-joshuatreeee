@@ -53,3 +53,39 @@ describe("cookieclicker game", function () {
         })
     })
 })
+
+describe("cookieclicker DOM manipulation", function(){
+    let testClicker
+    let testCount
+    let testButton
+
+    beforeEach(function(){
+        testClicker = new ClickCounter
+        testCount = document.createElement('div')
+        testButton = document.createElement('button')
+        makeCookieButton(testButton, testCount, testClicker)
+
+    })
+
+    describe("updateCounter", function(){
+        it("testCount should read 0 with no clicks", function(){
+            updateCounter(testCount, testClicker)
+            expect(testCount.innerText).toBe('0')
+        })
+        it("after clicking, testCount should read 1", function(){
+            testClicker.clickButton()
+            updateCounter(testCount, testClicker)
+            expect(testCount.innerText).toBe('1')
+        })
+    })
+    describe("makeCookieButton", function(){
+        it("Clicking once should add 1 to count", function(){
+            testButton.click()
+            expect(testClicker.showClickValue()).toBe(1)
+        })
+        it("Clicking once should change testCount innerText to 1", function(){
+            testButton.click()
+            expect(testCount.innerText).toBe('1')
+        })
+    })
+})
