@@ -3,16 +3,23 @@ class ClickCounter {
     constructor() {
         this.currentClicks = 0
         this.currentCompanions = 0
+        this.companionCost = 100
     }
 
     clickButton() {
-        this.currentClicks += 1
+        this.currentClicks++
     }
     showClickValue() {
         return this.currentClicks
     }
     addCompanion() {
-        this.currentCompanions += 1
+        if(this.currentClicks>=this.companionCost){
+            this.currentCompanions += 1
+            this.currentClicks = this.currentClicks-this.companionCost
+            this.companionCost = this.companionCost+this.companionCost*.1
+        }
     }
-
+    showCompanionValue() {
+        return this.currentCompanions
+    }
 }
