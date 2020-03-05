@@ -2,6 +2,7 @@ class ClickCounter {
 
     constructor() {
         this.currentClicks = 0
+        this.clickValue = 1
         this.currentCompanions = 0
         this.companionCost = 100
         this.currentCompounders = 0
@@ -9,7 +10,7 @@ class ClickCounter {
     }
 
     clickButton() {
-        this.currentClicks += 1
+        this.currentClicks = this.currentClicks + this.clickValue
     }
 
     showClickValue() {
@@ -25,7 +26,7 @@ class ClickCounter {
     }
 
     addCompanionCountToCurrentClicks() {
-        this.currentClicks = this.currentClicks + this.currentCompanions
+        this.currentClicks = this.currentClicks + this.currentCompanions*this.clickValue
     }
 
     increaseCompanionCost() {
@@ -45,7 +46,12 @@ class ClickCounter {
             this.currentCompounders++
             this.currentClicks = this.currentClicks-this.compounderCost
             this.increaseCompounderCost()
+            this.increaseClickValue()
         }
+    }
+
+    increaseClickValue() {
+        this.clickValue = this.clickValue + this.clickValue*.2
     }
 
     increaseCompounderCost() {

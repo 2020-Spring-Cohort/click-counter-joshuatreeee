@@ -48,11 +48,18 @@ describe("cookieclicker game", function () {
         })
     })
     describe("addCompanionCountToCurrentClicks", function(){
-        it("should add companion to click count", function(){
+        it("should add companion count to click count", function(){
             sut.currentClicks=100
             sut.addCompanion()
             sut.addCompanionCountToCurrentClicks()
             expect(sut.currentClicks).toBe(1)
+        })
+        it("should add companion count time 1.2 if compounder is added", function(){
+            sut.currentClicks=110
+            sut.addCompanion()
+            sut.addCompounder()
+            sut.addCompanionCountToCurrentClicks()
+            expect(sut.showClickValue()).toBe(1.2)
         })
     })
     describe("addCompounder", function(){
@@ -76,6 +83,12 @@ describe("cookieclicker game", function () {
             sut.addCompounder()
             expect(sut.currentCompounders).toBe(0)
         })
+        it("clickButton should return 1.2 for clickCount after compounder is added", function(){
+            sut.currentClicks=10
+            sut.addCompounder()
+            sut.clickButton()
+            expect(sut.showClickValue()).toBe(1.2)
+        })
     })
     describe("showCompounderValue", function(){
         it("should return 0 when no compounders are purchased", function(){
@@ -85,6 +98,13 @@ describe("cookieclicker game", function () {
             sut.currentClicks=10
             sut.addCompounder()
             expect(sut.showCompounderValue()).toBe(1)
+        })
+    })
+    describe("increaseClickValue", function(){
+        it("should change clickValue to 1.2 when increaseClickValue is called", function(){
+            sut.currentClicks = 1
+            sut.increaseClickValue()
+            expect(sut.clickValue).toBe(1.2)
         })
     })
 })
