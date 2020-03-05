@@ -28,19 +28,19 @@ describe("cookieclicker game", function () {
             sut.addCompanion()
             expect(sut.currentClicks).toBe(0)
         })
-        it("should add 10 to companionCost", function(){
+        xit("should add 10 to companionCost", function(){
             sut.currentClicks = 100
             sut.addCompanion()
             expect(sut.companionCost).toBe(110)
         })
         it("should add 10% to companionCost", function(){
-            sut.currentClicks = 110
+            sut.currentClicks = 500
             sut.companionCost = 110
             sut.addCompanion()
             expect(sut.companionCost).toBe(121)
         })
         it("should not addCompanion if currentClicks =/ companionCost", function(){
-            sut.companionCost = 9999
+            sut.currentClicks = 90
             sut.addCompanion()
             expect(sut.currentCompanions).toBe(0)
         })

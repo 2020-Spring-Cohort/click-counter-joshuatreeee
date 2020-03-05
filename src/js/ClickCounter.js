@@ -14,7 +14,7 @@ class ClickCounter {
     }
     addCompanion() {
         if(this.currentClicks>=this.companionCost){
-            this.currentCompanions += 1
+            this.currentCompanions++
             this.currentClicks = this.currentClicks-this.companionCost
             this.companionCost = this.companionCost+this.companionCost*.1
         }
