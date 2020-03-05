@@ -28,11 +28,6 @@ describe("cookieclicker game", function () {
             sut.addCompanion()
             expect(sut.currentClicks).toBe(0)
         })
-        xit("should add 10 to companionCost", function(){
-            sut.currentClicks = 100
-            sut.addCompanion()
-            expect(sut.companionCost).toBe(110)
-        })
         it("should add 10% to companionCost", function(){
             sut.currentClicks = 500
             sut.companionCost = 110
@@ -50,6 +45,34 @@ describe("cookieclicker game", function () {
             sut.currentClicks=100
             sut.addCompanion()
             expect(sut.showCompanionValue()).toBe(1)
+        })
+    })
+    describe("addCompanionCountToCurrentClicks", function(){
+        it("should add companion to click count", function(){
+            sut.currentClicks=100
+            sut.addCompanion()
+            sut.addCompanionCountToCurrentClicks()
+            expect(sut.currentClicks).toBe(1)
+        })
+    })
+    describe("addCompounder", function(){
+        it("should add 1 to companionCount after addCompounter", function(){
+            sut.addCompounder()
+            expect(sut.currentCompounders).toBe(1)
+        })
+        it("should subtract 10 from currentClicks", function(){
+            sut.currentClicks=10
+            sut.addCompounder()
+            expect(sut.showClickValue()).toBe(0)
+        })
+    })
+    describe("showCompounderValue", function(){
+        it("should return 0 when no compounders are purchased", function(){
+            expect(sut.showCompounderValue()).toBe(0)
+        })
+        it("should return 1 after addCompounder", function(){
+            sut.addCompounder()
+            expect(sut.showCompounderValue()).toBe(1)
         })
     })
 })
