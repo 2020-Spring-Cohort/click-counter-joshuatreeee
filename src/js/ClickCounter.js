@@ -41,8 +41,15 @@ class ClickCounter {
     }
 
     addCompounder() {
-        this.currentCompounders++
-        this.currentClicks = this.currentClicks-this.compounderCost
+        if(this.currentClicks>=this.compounderCost){
+            this.currentCompounders++
+            this.currentClicks = this.currentClicks-this.compounderCost
+            this.increaseCompounderCost()
+        }
+    }
+
+    increaseCompounderCost() {
+        this.compounderCost = this.compounderCost+this.compounderCost*.1
     }
 }
 
