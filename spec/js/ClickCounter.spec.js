@@ -127,9 +127,10 @@ describe("cookieclicker DOM manipulation", function(){
         testCompounderCount = document.createElement('div')
         testCompounderButton = document.createElement('button')
         testClickValue = document.createElement('div')
+        testCompounderPrice = document.createElement('div')
         makeCookieButton(testButton, testCount, testClicker)
         makeCompanionButton(testCompanionButton, testCompanionCount, testClicker)
-        makeCompounderButton(testCompounderButton, testCompounderCount, testClickValue, testClicker)
+        makeCompounderButton(testCompounderButton, testCompounderCount, testCompounderPrice, testClickValue, testClicker)
     })
 
     describe("updateCounter", function(){
@@ -203,6 +204,15 @@ describe("cookieclicker DOM manipulation", function(){
         })
     })
 
+    describe("updateCompounderCost", function(){
+        it("after clicking, compounderCost should read 11", function(){
+            testClicker.currentClicks = 10
+            testClicker.addCompounder()
+            updateCompounderCost(testCompounderPrice, testClicker)
+            expect(testCompounderPrice.innerText).toBe('11')
+        })
+    })
+
     describe("makeCompounderButton", function(){
         it("clicking once should add 1 to compounder count", function(){
             testClicker.currentClicks = 10
@@ -213,6 +223,6 @@ describe("cookieclicker DOM manipulation", function(){
             testClicker.currentClicks = 10
             testCompounderButton.click()
             expect(testCompounderCount.innerText).toBe('1')
-        })
+        }) 
     })
 })

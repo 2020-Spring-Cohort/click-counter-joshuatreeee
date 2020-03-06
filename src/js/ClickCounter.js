@@ -20,6 +20,10 @@ class ClickCounter {
     showClickValue() {
         return this.clickValue
     }
+
+    showCompounderCost() {
+        return this.compounderCost
+    }
     
     addCompanion() {
         if(this.currentClicks>=this.companionCost){
@@ -93,11 +97,22 @@ const updateClickValue = (clickValueElement, clickCounter) => {
     clickValueElement.innerText = clickCounter.showClickValue()
 }
 
-const makeCompounderButton = (compounderButtonElement, compounderCountElement, clickValueElement, compounderCounter) => {
+const updateCompounderCost = (compounderCostElement, costCounter) => {
+    compounderCostElement.innerText = costCounter.showCompounderCost()
+}
+
+const makeResetButton = (resetButtonElement) => {
+    resetButtonElement.addEventListener('click', function(){
+        location.reload()
+    })
+}
+
+const makeCompounderButton = (compounderButtonElement, compounderCountElement, clickValueElement, compounderCostElement, compounderCounter) => {
     compounderButtonElement.addEventListener('click', function(){
         compounderCounter.addCompounder()
         updateCompounderCounter(compounderCountElement, compounderCounter)
         updateClickValue(clickValueElement, compounderCounter)
+        updateCompounderCost(compounderCostElement, compounderCounter)
     })
 }
 
@@ -108,15 +123,23 @@ const companionButtonElement = document.querySelector('#companionButton')
 const companionCountElement = document.querySelector('#companionCount')
 const compounderButtonElement = document.querySelector('#compounderButton')
 const compounderCountElement = document.querySelector('#compounderCount')
+const compounderCostElement = document.querySelector('#compounderCost')
 const cookieCounter = new ClickCounter()
+const resetButton = document.querySelector('#resetButton')
 
 setInterval(cookieCounter.addCompanionCountToCurrentClicks, 1000)
 setInterval(cookieCounter.showCurrentClicks, 1000)
+
+
+
 
 makeCookieButton(buttonElement, countElement, cookieCounter)
 updateCounter(countElement, cookieCounter)
 makeCompanionButton(companionButtonElement, companionCountElement, cookieCounter)
 updateCompanionCounter(companionCountElement, cookieCounter)
-makeCompounderButton(compounderButtonElement, compounderCountElement, clickValueElement, cookieCounter)
+makeCompounderButton(compounderButtonElement, compounderCountElement, clickValueElement, compounderCostElement, cookieCounter)
 updateCompounderCounter(compounderCountElement, cookieCounter)
 updateClickValue(clickValueElement, cookieCounter)
+updateCompounderCost(compounderCostElement, cookieCounter)
+makeResetButton(resetButton, cookieCounter)
+
