@@ -137,11 +137,10 @@ const compounderCostElement = document.querySelector('#compounderCost')
 const cookieCounter = new ClickCounter()
 const resetButton = document.querySelector('#resetButton')
 
+
+
 setInterval(cookieCounter.addCompanionCountToCurrentClicks, 1000)
 setInterval(cookieCounter.showCurrentClicks, 1000)
-
-
-
 
 makeCookieButton(buttonElement, countElement, cookieCounter)
 updateCounter(countElement, cookieCounter)
