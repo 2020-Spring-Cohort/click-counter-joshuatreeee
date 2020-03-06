@@ -113,6 +113,10 @@ describe("cookieclicker DOM manipulation", function(){
     let testClicker
     let testCount
     let testButton
+    let testCompanionCount
+    let testCompanionButton
+    let testCompounderCount
+    let testCompounderButton
 
     beforeEach(function(){
         testClicker = new ClickCounter
@@ -120,8 +124,11 @@ describe("cookieclicker DOM manipulation", function(){
         testButton = document.createElement('button')
         testCompanionCount = document.createElement('div')
         testCompanionButton = document.createElement('button')
+        testCompounderCount = document.createElement('div')
+        testCompounderButton = document.createElement('button')
         makeCookieButton(testButton, testCount, testClicker)
         makeCompanionButton(testCompanionButton, testCompanionCount, testClicker)
+        makeCompounderButton(testCompounderButton, testCompounderCount, testClicker)
 
     })
 
@@ -171,6 +178,32 @@ describe("cookieclicker DOM manipulation", function(){
             testClicker.currentClicks = 100
             testCompanionButton.click()
             expect(testCompanionCount.innerText).toBe('1')
+        })
+    })
+
+    describe("updateCompounderCounter", function(){
+        it("testCompounderCount should read 0 with no clicks", function(){
+            updateCompounderCounter(testCompounderCount, testClicker)
+            expect(testCompounderCount.innerText).toBe('0')
+        })
+        it("after clicking, testCompounderCount should read 1", function(){
+            testClicker.currentClicks = 10
+            testClicker.addCompounder()
+            updateCompounderCounter(testCompounderCount, testClicker)
+            expect(testCompounderCount.innerText).toBe('1')
+        })
+    })
+
+    describe("makeCompounderButton", function(){
+        it("clicking once should add 1 to compounder count", function(){
+            testClicker.currentClicks = 10
+            testCompounderButton.click()
+            expect(testClicker.showCompounderValue()).toBe(1)
+        })
+        it("clicking once should change testCompounderCount innerText to 1", function(){
+            testClicker.currentClicks = 10
+            testCompounderButton.click()
+            expect(testCompounderCount.innerText).toBe('1')
         })
     })
 })
