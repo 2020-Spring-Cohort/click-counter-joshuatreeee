@@ -11,10 +11,10 @@ describe("cookieclicker game", function () {
             expect(sut.currentClicks).toBe(1)
         })
     })
-    describe("showClickValue", function(){
+    describe("showCurrentClicks", function(){
         it("should return 1 after clickButton", function(){
             sut.clickButton()
-            expect(sut.showClickValue()).toBe(1)
+            expect(sut.showCurrentClicks()).toBe(1)
         })
     })
     describe("addCompanion", function(){
@@ -59,7 +59,7 @@ describe("cookieclicker game", function () {
             sut.addCompanion()
             sut.addCompounder()
             sut.addCompanionCountToCurrentClicks()
-            expect(sut.showClickValue()).toBe(1.2)
+            expect(sut.showCurrentClicks()).toBe(1.2)
         })
     })
     describe("addCompounder", function(){
@@ -71,7 +71,7 @@ describe("cookieclicker game", function () {
         it("should subtract 10 from currentClicks", function(){
             sut.currentClicks=10
             sut.addCompounder()
-            expect(sut.showClickValue()).toBe(0)
+            expect(sut.showCurrentClicks()).toBe(0)
         })
         it("should add 10% to compounderCost", function(){
             sut.currentClicks=10
@@ -87,7 +87,7 @@ describe("cookieclicker game", function () {
             sut.currentClicks=10
             sut.addCompounder()
             sut.clickButton()
-            expect(sut.showClickValue()).toBe(1.2)
+            expect(sut.showCurrentClicks()).toBe(1.2)
         })
     })
     describe("showCompounderValue", function(){
@@ -126,10 +126,10 @@ describe("cookieclicker DOM manipulation", function(){
         testCompanionButton = document.createElement('button')
         testCompounderCount = document.createElement('div')
         testCompounderButton = document.createElement('button')
+        testClickValue = document.createElement('div')
         makeCookieButton(testButton, testCount, testClicker)
         makeCompanionButton(testCompanionButton, testCompanionCount, testClicker)
-        makeCompounderButton(testCompounderButton, testCompounderCount, testClicker)
-
+        makeCompounderButton(testCompounderButton, testCompounderCount, testClickValue, testClicker)
     })
 
     describe("updateCounter", function(){
@@ -147,7 +147,7 @@ describe("cookieclicker DOM manipulation", function(){
     describe("makeCookieButton", function(){
         it("Clicking once should add 1 to count", function(){
             testButton.click()
-            expect(testClicker.showClickValue()).toBe(1)
+            expect(testClicker.showCurrentClicks()).toBe(1)
         })
         it("Clicking once should change testCount innerText to 1", function(){
             testButton.click()
@@ -191,6 +191,15 @@ describe("cookieclicker DOM manipulation", function(){
             testClicker.addCompounder()
             updateCompounderCounter(testCompounderCount, testClicker)
             expect(testCompounderCount.innerText).toBe('1')
+        })
+    })
+
+    describe("updateClickValue", function(){
+        it("after clicking, click value should read 1.2", function(){
+            testClicker.currentClicks = 10
+            testClicker.addCompounder()
+            updateClickValue(testClickValue, testClicker)
+            expect(testClickValue.innerText).toBe('1.2')
         })
     })
 

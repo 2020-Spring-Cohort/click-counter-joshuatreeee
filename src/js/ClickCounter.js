@@ -13,8 +13,12 @@ class ClickCounter {
         this.currentClicks = this.currentClicks + this.clickValue
     }
     
-    showClickValue() {
+    showCurrentClicks() {
         return this.currentClicks
+    }
+
+    showClickValue() {
+        return this.clickValue
     }
     
     addCompanion() {
@@ -26,7 +30,7 @@ class ClickCounter {
     }
     
     addCompanionCountToCurrentClicks() {
-        this.currentClicks = this.currentClicks + this.currentCompanions*this.clickValue
+        this.currentClicks = this.currentClicks + (this.currentCompanions*this.clickValue)
     }
     
     increaseCompanionCost() {
@@ -60,7 +64,7 @@ class ClickCounter {
 }
 
 const updateCounter = (countElement, clickCounter) => {
-    countElement.innerText = clickCounter.showClickValue()
+    countElement.innerText = clickCounter.showCurrentClicks()
 }
 
 const makeCookieButton = (buttonElement, countElement, clickCounter) => {
@@ -85,24 +89,34 @@ const updateCompounderCounter = (compounderCountElement, compounderCounter) => {
     compounderCountElement.innerText = compounderCounter.showCompounderValue()
 }
 
-const makeCompounderButton = (compounderButtonElement, compounderCountElement, compounderCounter) => {
+const updateClickValue = (clickValueElement, clickCounter) => {
+    clickValueElement.innerText = clickCounter.showClickValue()
+}
+
+const makeCompounderButton = (compounderButtonElement, compounderCountElement, clickValueElement, compounderCounter) => {
     compounderButtonElement.addEventListener('click', function(){
         compounderCounter.addCompounder()
         updateCompounderCounter(compounderCountElement, compounderCounter)
+        updateClickValue(clickValueElement, compounderCounter)
     })
 }
 
 const buttonElement = document.querySelector('#cookieButton')
 const countElement = document.querySelector('#cookieCount')
+const clickValueElement = document.querySelector('#cookieValue')
 const companionButtonElement = document.querySelector('#companionButton')
 const companionCountElement = document.querySelector('#companionCount')
 const compounderButtonElement = document.querySelector('#compounderButton')
 const compounderCountElement = document.querySelector('#compounderCount')
 const cookieCounter = new ClickCounter()
 
+setInterval(cookieCounter.addCompanionCountToCurrentClicks, 1000)
+setInterval(cookieCounter.showCurrentClicks, 1000)
+
 makeCookieButton(buttonElement, countElement, cookieCounter)
 updateCounter(countElement, cookieCounter)
 makeCompanionButton(companionButtonElement, companionCountElement, cookieCounter)
 updateCompanionCounter(companionCountElement, cookieCounter)
-makeCompounderButton(compounderButtonElement, compounderCountElement, cookieCounter)
+makeCompounderButton(compounderButtonElement, compounderCountElement, clickValueElement, cookieCounter)
 updateCompounderCounter(compounderCountElement, cookieCounter)
+updateClickValue(clickValueElement, cookieCounter)
