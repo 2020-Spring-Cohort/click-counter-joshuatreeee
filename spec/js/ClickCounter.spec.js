@@ -78,12 +78,12 @@ describe("cookieclicker game", function () {
             sut.addCompounder()
             expect(sut.compounderCost).toBe(11)
         })
-        it("should not increase compounderCount if clickCount <= compounderCost", function(){
+        it("should not increase compounderCount if currentClicks <= compounderCost", function(){
             sut.currentClicks=9
             sut.addCompounder()
             expect(sut.currentCompounders).toBe(0)
         })
-        it("clickButton should return 1.2 for clickCount after compounder is added", function(){
+        it("clickButton should return 1.2 for currentClicks after compounder is added", function(){
             sut.currentClicks=10
             sut.addCompounder()
             sut.clickButton()
@@ -118,7 +118,10 @@ describe("cookieclicker DOM manipulation", function(){
         testClicker = new ClickCounter
         testCount = document.createElement('div')
         testButton = document.createElement('button')
+        testCompanionCount = document.createElement('div')
+        testCompanionButton = document.createElement('button')
         makeCookieButton(testButton, testCount, testClicker)
+        makeCompanionButton(testCompanionButton, testCompanionCount, testClicker)
 
     })
 
@@ -133,6 +136,7 @@ describe("cookieclicker DOM manipulation", function(){
             expect(testCount.innerText).toBe('1')
         })
     })
+
     describe("makeCookieButton", function(){
         it("Clicking once should add 1 to count", function(){
             testButton.click()
@@ -141,6 +145,32 @@ describe("cookieclicker DOM manipulation", function(){
         it("Clicking once should change testCount innerText to 1", function(){
             testButton.click()
             expect(testCount.innerText).toBe('1')
+        })
+    })
+
+    describe("updateCompanionCounter", function(){
+        it("testCompanionCount should read 0 with no clicks", function(){
+            updateCompanionCounter(testCompanionCount, testClicker)
+            expect(testCompanionCount.innerText).toBe('0')
+        })
+        it("after clicking, testCompanionCount should read 1", function(){
+            testClicker.currentClicks = 100
+            testClicker.addCompanion()
+            updateCompanionCounter(testCompanionCount, testClicker)
+            expect(testCompanionCount.innerText).toBe('1')
+        })
+    })
+    
+    describe("makeCompanionButton", function(){
+        it("clicking once should add 1 to companion count", function(){
+            testClicker.currentClicks = 100
+            testCompanionButton.click()
+            expect(testClicker.showCompanionValue()).toBe(1)
+        })
+        it("clicking once should change testCompanionCount innerText to 1", function(){
+            testClicker.currentClicks = 100
+            testCompanionButton.click()
+            expect(testCompanionCount.innerText).toBe('1')
         })
     })
 })

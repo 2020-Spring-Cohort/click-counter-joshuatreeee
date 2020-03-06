@@ -70,11 +70,27 @@ const makeCookieButton = (buttonElement, countElement, clickCounter) => {
     })
 }
 
+const updateCompanionCounter = (companionCountElement, companionCounter) => {
+    companionCountElement.innerText = companionCounter.showCompanionValue()
+}
+
+const makeCompanionButton = (companionButtonElement, companionCountElement, companionCounter) => {
+    companionButtonElement.addEventListener('click', function(){
+        companionCounter.addCompanion()
+        updateCompanionCounter(companionCountElement, companionCounter)
+        clickCounter.updateCounter()
+    })
+}
+
 const buttonElement = document.querySelector('#cookieButton')
 const countElement = document.querySelector('#cookieCount')
+const companionButtonElement = document.querySelector('#companionButton')
+const companionCountElement = document.querySelector('#companionCount')
 const cookieCounter = new ClickCounter()
 
 makeCookieButton(buttonElement, countElement, cookieCounter)
 updateCounter(countElement, cookieCounter)
+makeCompanionButton(companionButtonElement, companionCountElement, cookieCounter)
+updateCompanionCounter(companionCountElement, cookieCounter)
 
 setInterval(cookieCounter.addCompanionCountToCurrentClicks(), 1000)
