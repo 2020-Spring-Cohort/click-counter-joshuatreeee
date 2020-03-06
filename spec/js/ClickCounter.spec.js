@@ -115,8 +115,10 @@ describe("cookieclicker DOM manipulation", function(){
     let testButton
     let testCompanionCount
     let testCompanionButton
+    let testCompanionPrice
     let testCompounderCount
     let testCompounderButton
+    let testCompounderPrice
 
     beforeEach(function(){
         testClicker = new ClickCounter
@@ -128,8 +130,9 @@ describe("cookieclicker DOM manipulation", function(){
         testCompounderButton = document.createElement('button')
         testClickValue = document.createElement('div')
         testCompounderPrice = document.createElement('div')
+        testCompanionPrice = document.createElement('div')
         makeCookieButton(testButton, testCount, testClicker)
-        makeCompanionButton(testCompanionButton, testCompanionCount, testClicker)
+        makeCompanionButton(testCompanionButton, testCompanionCount, testCompanionPrice, testClicker)
         makeCompounderButton(testCompounderButton, testCompounderCount, testCompounderPrice, testClickValue, testClicker)
     })
 
@@ -210,6 +213,15 @@ describe("cookieclicker DOM manipulation", function(){
             testClicker.addCompounder()
             updateCompounderCost(testCompounderPrice, testClicker)
             expect(testCompounderPrice.innerText).toBe('11')
+        })
+    })
+
+    describe("updateCompanionCost", function(){
+        it("after clicking, companionCost should read 110", function(){
+            testClicker.currentClicks = 100
+            testClicker.addCompanion()
+            updateCompanionCost(testCompanionPrice, testClicker)
+            expect(testCompanionPrice.innerText).toBe('110')
         })
     })
 
