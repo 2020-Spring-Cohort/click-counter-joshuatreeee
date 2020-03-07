@@ -9,31 +9,37 @@
     <header>
         <nav>
             <a href="https://orteil.dashnet.org/cookieclicker/" target="_blank">Inspiration</a>
-            <a href="#about-Company">About We Can Code IT</a>
-            <a href="#about-Josh">About The Coder</a>
+            <a onclick="showAboutCompany()" id="aboutCompanyLink">About We Can Code IT</a>
+            <a onclick="showAboutJosh()" id="aboutJoshLink">About The Coder</a>
         </nav>
     </header>
     
-    <section id="about-Josh" class="josh hide">
+    <section id="about-Josh" hidden>
         <p>Josh Yang is a software developer studying full-stack web development in Cleveland, Ohio! All of what you see on this page has been coded by him, by hand.</p>
+        <a href="https://joshuatreeee.github.io/">Here's a link to his portfolio!</a>
+        <a href="https://github.com/joshuatreeee">Here's a link to his GitHub profile!</a>
+    </section>
+
+    <section id="about-Company" hidden>
+        <p>We Can Code IT is a five-star coding boot camp dedicated to teaching its students the skills needed to land a job in the world of technology. For more information, please visit <a href="https://wecancodeit.org/diversity-inclusion-in-tech-coding-bootcamp/">this link</a>.</p>
     </section>
 
     <section>
-        <button id="cookieButton">COOKIE</button>
+        <button onclick="enableCompounderButton(); enableCompanionButton()" id="cookieButton">COOKIE</button>
         <div id="cookieCount">0</div>
         <p>Cookie Multiplier:</p>
         <div id="cookieValue">1</div>
     </section>
     
     <section id="companionElement">
-        <button id="companionButton">Add Companion</button>
+        <button id="companionButton" disabled>Add Companion</button>
         <div id="companionCount">0</div>
         <p>Companion Cost</p>
         <div id="companionCost">100</div>
     </section>
 
     <section id="compounderElement">
-        <button id="compounderButton">Add Compounder</button>
+        <button id="compounderButton" disabled>Add Compounder</button>
         <div id="compounderCount">0</div>
         <p>Compounder Cost</p>
         <div id="compounderCost">10</div>

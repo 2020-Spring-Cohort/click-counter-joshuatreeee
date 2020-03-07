@@ -125,6 +125,51 @@ const makeCompounderButton = (compounderButtonElement, compounderCountElement, c
     })
 }
 
+function showAboutJosh() {
+    const aboutJosh = document.getElementById("about-Josh")
+    if (aboutJosh.style.display === "block") {
+      aboutJosh.style.display = "none"
+    }
+    else {
+      aboutJosh.style.display = "block"
+    }
+}
+
+function showAboutCompany() {
+    const aboutCompany = document.getElementById("about-Company")
+    if (aboutCompany.style.display === "block") {
+      aboutCompany.style.display = "none"
+    }
+    else {
+      aboutCompany.style.display = "block"
+    }
+}
+
+function enableCompounderButton() {
+    if (cookieCounter.currentClicks >= cookieCounter.compounderCost) {
+        compounderButtonElement.removeAttribute('disabled')
+    } 
+    else {
+        compounderButtonElement.disabled = true
+    }
+}
+
+function enableCompanionButton() {
+    if (cookieCounter.currentClicks >= cookieCounter.companionCost) {
+        companionButtonElement.removeAttribute('disabled')
+    } 
+    else {
+        companionButtonElement.disabled = true
+    }
+}
+
+const autoClickElement = setInterval(autoClick, 1000);
+
+function autoClick() {
+  cookieCounter.addCompanionCountToCurrentClicks()
+  updateCounter(countElement, cookieCounter)
+}
+
 const buttonElement = document.querySelector('#cookieButton')
 const countElement = document.querySelector('#cookieCount')
 const clickValueElement = document.querySelector('#cookieValue')
@@ -137,10 +182,6 @@ const compounderCostElement = document.querySelector('#compounderCost')
 const cookieCounter = new ClickCounter()
 const resetButton = document.querySelector('#resetButton')
 
-
-
-setInterval(cookieCounter.addCompanionCountToCurrentClicks, 1000)
-setInterval(cookieCounter.showCurrentClicks, 1000)
 
 makeCookieButton(buttonElement, countElement, cookieCounter)
 updateCounter(countElement, cookieCounter)

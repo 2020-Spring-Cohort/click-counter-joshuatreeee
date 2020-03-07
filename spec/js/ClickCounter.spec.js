@@ -102,7 +102,6 @@ describe("cookieclicker game", function () {
     })
     describe("increaseClickValue", function(){
         it("should change clickValue to 1.2 when increaseClickValue is called", function(){
-            sut.currentClicks = 1
             sut.increaseClickValue()
             expect(sut.clickValue).toBe(1.2)
         })
