@@ -182,6 +182,11 @@ describe("cookieclicker DOM manipulation", function(){
             testCompanionButton.click()
             expect(testCompanionCount.innerText).toBe('1')
         })
+        it("clicking once should change testCount innerText to 0", function(){
+            testClicker.currentClicks = 100
+            testCompanionButton.click()
+            expect(testCount.innerText).toBe('0')
+        })
     })
 
     describe("updateCompounderCounter", function(){
@@ -235,5 +240,10 @@ describe("cookieclicker DOM manipulation", function(){
             testCompounderButton.click()
             expect(testCompounderCount.innerText).toBe('1')
         }) 
+        it("clicking once should change testCount innerText to 0", function(){
+            testClicker.currentClicks = 10
+            testCompounderButton.click()
+            expect(testCount.innerText).toBe('0')
+        })
     })
 })
