@@ -88,11 +88,12 @@ const updateCompanionCounter = (companionCountElement, companionCounter) => {
     companionCountElement.innerText = companionCounter.showCompanionValue()
 }
 
-const makeCompanionButton = (companionButtonElement, companionCountElement, companionCostElement, companionCounter) => {
+const makeCompanionButton = (companionButtonElement, companionCountElement, companionCostElement, cookieCountElement, companionCounter) => {
     companionButtonElement.addEventListener('click', function(){
         companionCounter.addCompanion()
         updateCompanionCounter(companionCountElement, companionCounter)
         updateCompanionCost(companionCostElement, companionCounter)
+        updateCounter(cookieCountElement, companionCounter)
         enableCompanionButton()
         enableCompounderButton()
     })
@@ -102,12 +103,13 @@ const updateCompounderCounter = (compounderCountElement, compounderCounter) => {
     compounderCountElement.innerText = compounderCounter.showCompounderValue()
 }
 
-const makeCompounderButton = (compounderButtonElement, compounderCountElement, clickValueElement, compounderCostElement, compounderCounter) => {
+const makeCompounderButton = (compounderButtonElement, compounderCountElement, clickValueElement, compounderCostElement, cookieCountElement, compounderCounter) => {
     compounderButtonElement.addEventListener('click', function(){
         compounderCounter.addCompounder()
         updateCompounderCounter(compounderCountElement, compounderCounter)
         updateClickValue(clickValueElement, compounderCounter)
         updateCompounderCost(compounderCostElement, compounderCounter)
+        updateCounter(cookieCountElement, compounderCounter)
         enableCompanionButton()
         enableCompounderButton()
     })
@@ -193,9 +195,9 @@ const resetButton = document.querySelector('#resetButton')
 
 makeCookieButton(buttonElement, countElement, cookieCounter)
 updateCounter(countElement, cookieCounter)
-makeCompanionButton(companionButtonElement, companionCountElement, companionCostElement, cookieCounter)
+makeCompanionButton(companionButtonElement, companionCountElement, companionCostElement, countElement, cookieCounter)
 updateCompanionCounter(companionCountElement, cookieCounter)
-makeCompounderButton(compounderButtonElement, compounderCountElement, clickValueElement, compounderCostElement, cookieCounter)
+makeCompounderButton(compounderButtonElement, compounderCountElement, clickValueElement, compounderCostElement, countElement, cookieCounter)
 updateCompounderCounter(compounderCountElement, cookieCounter)
 updateClickValue(clickValueElement, cookieCounter)
 updateCompounderCost(compounderCostElement, cookieCounter)
