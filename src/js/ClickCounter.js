@@ -134,7 +134,6 @@ const makeResetButton = (resetButtonElement) => {
 }
 
 function showAboutJosh() {
-    const aboutJosh = document.getElementById("about-Josh")
     if (aboutJosh.style.display === "block") {
       aboutJosh.style.display = "none"
     }
@@ -144,7 +143,6 @@ function showAboutJosh() {
 }
 
 function showAboutCompany() {
-    const aboutCompany = document.getElementById("about-Company")
     if (aboutCompany.style.display === "block") {
       aboutCompany.style.display = "none"
     }
@@ -180,6 +178,8 @@ function autoClick() {
   enableCompounderButton()
 }
 
+const aboutCompany = document.getElementById("about-Company")
+const aboutJosh = document.getElementById("about-Josh")
 const buttonElement = document.querySelector('#cookieButton')
 const countElement = document.querySelector('#cookieCount')
 const clickValueElement = document.querySelector('#cookieValue')
@@ -192,7 +192,6 @@ const compounderCostElement = document.querySelector('#compounderCost')
 const cookieCounter = new ClickCounter()
 const resetButton = document.querySelector('#resetButton')
 
-
 makeCookieButton(buttonElement, countElement, cookieCounter)
 updateCounter(countElement, cookieCounter)
 makeCompanionButton(companionButtonElement, companionCountElement, companionCostElement, countElement, cookieCounter)
@@ -202,4 +201,3 @@ updateCompounderCounter(compounderCountElement, cookieCounter)
 updateClickValue(clickValueElement, cookieCounter)
 updateCompounderCost(compounderCostElement, cookieCounter)
 makeResetButton(resetButton, cookieCounter)
-

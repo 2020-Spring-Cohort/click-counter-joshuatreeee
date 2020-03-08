@@ -10,6 +10,10 @@ html{
     text-align: center;
 }
 
+header {
+    border-bottom: 2px solid #1C448E;
+}
+
 nav {
     display: flex;
     flex-direction: row;
@@ -33,6 +37,7 @@ nav a:hover {
 }
 
 .about{
+    font-family: 'Luckiest Guy';
     position: absolute;
     width: 350px;
     height: 350px;
@@ -40,7 +45,7 @@ nav a:hover {
     left: 50%;
     margin-left: -175px;
     background-color: rgba(255, 213, 154, .8);
-    border: 1px solid sienna;
+    border: 2px solid sienna;
     border-radius: 350px;
 }
 
@@ -58,6 +63,54 @@ nav a:hover {
     font-size: 3em;
 }
 
-#companionElement, #compounderElement{
-    float: right;
+#cookieElement p, #cookieValue{
+    font-size: 1.5em;
+}
+
+#interactButtons{
+    display: grid;
+    width: 700px;
+    margin: 0 auto;
+    grid-template-columns: 350px 350px;
+    grid-template-rows: 200px 200px 100px;
+}
+
+#cookieElement{
+    grid-row-start: 1;
+    grid-row-end: -1;
+}
+
+#companionElement, #compounderElement {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px 0;
+    margin-bottom: 3em;
+    background-color: #6F8695;
+    padding: 1em;
+    border: 2px solid #1C448E;
+    border-radius: 25px;
+}
+
+#companionCount, #compounderCount, #companionCost, #compounderCost{
+    text-align: left;
+}
+
+
+#companionButton, #compounderButton, #resetButton {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    width: 50%;
+    margin: 0 auto;
+    border: 2px solid sienna;
+    padding: .5em;
+    background-color: rgb(255, 213, 154);
+    border-radius: 25px;
+    color: black;
+}
+
+#companionButton:disabled, #compounderButton:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    border-radius: 25px;
 }
