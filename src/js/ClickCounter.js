@@ -14,19 +14,43 @@ class ClickCounter {
     }
     
     showCurrentClicks() {
-        return this.currentClicks
+        this.fixClicks = this.currentClicks.toFixed(2)
+        if(this.currentClicks.toString().length > 3){
+            return this.fixClicks
+        }
+        else{
+            return this.currentClicks
+        }
     }
 
     showClickValue() {
-        return this.clickValue
+        this.fixValue = this.clickValue.toFixed(4)
+        if(this.clickValue.toString().length > 5){
+            return this.fixValue
+        }
+        else{
+            return this.clickValue
+        }
     }
 
     showCompounderCost() {
-        return this.compounderCost
+        this.fixCompounderCost = this.compounderCost.toFixed(4)
+        if(this.compounderCost.toString().length > 5){
+            return this.fixCompounderCost
+        }
+        else{
+            return this.compounderCost
+        }
     }
     
     showCompanionCost() {
-        return this.companionCost
+        this.fixCompanionCost = this.companionCost.toFixed(4)
+        if(this.companionCost.toString().length > 5){
+            return this.fixCompanionCost
+        }
+        else{
+            return this.companionCost
+        }
     }
 
     addCompanion() {
