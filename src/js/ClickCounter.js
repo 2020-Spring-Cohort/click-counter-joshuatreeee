@@ -108,32 +108,32 @@ const makeCookieButton = (buttonElement, countElement, clickCounter) => {
     })
 }
 
-const updateCompanionCounter = (companionCountElement, companionCounter) => {
-    companionCountElement.innerText = companionCounter.showCompanionValue()
+const updateCompanionCounter = (companionCountElement, clickCounter) => {
+    companionCountElement.innerText = clickCounter.showCompanionValue()
 }
 
-const makeCompanionButton = (companionButtonElement, companionCountElement, companionCostElement, cookieCountElement, companionCounter) => {
+const makeCompanionButton = (companionButtonElement, companionCountElement, companionCostElement, cookieCountElement, clickCounter) => {
     companionButtonElement.addEventListener('click', function(){
-        companionCounter.addCompanion()
-        updateCompanionCounter(companionCountElement, companionCounter)
-        updateCompanionCost(companionCostElement, companionCounter)
-        updateCounter(cookieCountElement, companionCounter)
+        clickCounter.addCompanion()
+        updateCompanionCounter(companionCountElement, clickCounter)
+        updateCompanionCost(companionCostElement, clickCounter)
+        updateCounter(cookieCountElement, clickCounter)
         enableCompanionButton()
         enableCompounderButton()
     })
 }
 
-const updateCompounderCounter = (compounderCountElement, compounderCounter) => {
-    compounderCountElement.innerText = compounderCounter.showCompounderValue()
+const updateCompounderCounter = (compounderCountElement, clickCounter) => {
+    compounderCountElement.innerText = clickCounter.showCompounderValue()
 }
 
-const makeCompounderButton = (compounderButtonElement, compounderCountElement, clickValueElement, compounderCostElement, cookieCountElement, compounderCounter) => {
+const makeCompounderButton = (compounderButtonElement, compounderCountElement, clickValueElement, compounderCostElement, cookieCountElement, clickCounter) => {
     compounderButtonElement.addEventListener('click', function(){
-        compounderCounter.addCompounder()
-        updateCompounderCounter(compounderCountElement, compounderCounter)
-        updateClickValue(clickValueElement, compounderCounter)
-        updateCompounderCost(compounderCostElement, compounderCounter)
-        updateCounter(cookieCountElement, compounderCounter)
+        clickCounter.addCompounder()
+        updateCompounderCounter(compounderCountElement, clickCounter)
+        updateClickValue(clickValueElement, clickCounter)
+        updateCompounderCost(compounderCostElement, clickCounter)
+        updateCounter(cookieCountElement, clickCounter)
         enableCompanionButton()
         enableCompounderButton()
     })
@@ -143,12 +143,12 @@ const updateClickValue = (clickValueElement, clickCounter) => {
     clickValueElement.innerText = clickCounter.showClickValue()
 }
 
-const updateCompounderCost = (compounderCostElement, costCounter) => {
-    compounderCostElement.innerText = costCounter.showCompounderCost()
+const updateCompounderCost = (compounderCostElement, clickCounter) => {
+    compounderCostElement.innerText = clickCounter.showCompounderCost()
 }
 
-const updateCompanionCost = (companionCostElement, companionCounter) => {
-    companionCostElement.innerText = companionCounter.showCompanionCost()
+const updateCompanionCost = (companionCostElement, clickCounter) => {
+    companionCostElement.innerText = clickCounter.showCompanionCost()
 }
 
 const makeResetButton = (resetButtonElement) => {
