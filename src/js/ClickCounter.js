@@ -79,6 +79,8 @@ const makeCookieButton = (buttonElement, countElement, clickCounter) => {
     buttonElement.addEventListener('click', function(){
         clickCounter.clickButton()
         updateCounter(countElement, clickCounter)
+        enableCompanionButton()
+        enableCompounderButton()
     })
 }
 
@@ -91,11 +93,24 @@ const makeCompanionButton = (companionButtonElement, companionCountElement, comp
         companionCounter.addCompanion()
         updateCompanionCounter(companionCountElement, companionCounter)
         updateCompanionCost(companionCostElement, companionCounter)
+        enableCompanionButton()
+        enableCompounderButton()
     })
 }
 
 const updateCompounderCounter = (compounderCountElement, compounderCounter) => {
     compounderCountElement.innerText = compounderCounter.showCompounderValue()
+}
+
+const makeCompounderButton = (compounderButtonElement, compounderCountElement, clickValueElement, compounderCostElement, compounderCounter) => {
+    compounderButtonElement.addEventListener('click', function(){
+        compounderCounter.addCompounder()
+        updateCompounderCounter(compounderCountElement, compounderCounter)
+        updateClickValue(clickValueElement, compounderCounter)
+        updateCompounderCost(compounderCostElement, compounderCounter)
+        enableCompanionButton()
+        enableCompounderButton()
+    })
 }
 
 const updateClickValue = (clickValueElement, clickCounter) => {
@@ -113,15 +128,6 @@ const updateCompanionCost = (companionCostElement, companionCounter) => {
 const makeResetButton = (resetButtonElement) => {
     resetButtonElement.addEventListener('click', function(){
         location.reload()
-    })
-}
-
-const makeCompounderButton = (compounderButtonElement, compounderCountElement, clickValueElement, compounderCostElement, compounderCounter) => {
-    compounderButtonElement.addEventListener('click', function(){
-        compounderCounter.addCompounder()
-        updateCompounderCounter(compounderCountElement, compounderCounter)
-        updateClickValue(clickValueElement, compounderCounter)
-        updateCompounderCost(compounderCostElement, compounderCounter)
     })
 }
 
@@ -168,6 +174,8 @@ const autoClickElement = setInterval(autoClick, 1000);
 function autoClick() {
   cookieCounter.addCompanionCountToCurrentClicks()
   updateCounter(countElement, cookieCounter)
+  enableCompanionButton()
+  enableCompounderButton()
 }
 
 const buttonElement = document.querySelector('#cookieButton')
