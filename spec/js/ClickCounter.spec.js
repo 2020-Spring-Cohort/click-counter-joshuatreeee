@@ -131,8 +131,8 @@ describe("cookieclicker DOM manipulation", function(){
         testCompounderPrice = document.createElement('div')
         testCompanionPrice = document.createElement('div')
         makeCookieButton(testButton, testCount, testClicker)
-        makeCompanionButton(testCompanionButton, testCompanionCount, testCompanionPrice, testClicker)
-        makeCompounderButton(testCompounderButton, testCompounderCount, testCompounderPrice, testClickValue, testClicker)
+        makeCompanionButton(testCompanionButton, testCompanionCount, testCompanionPrice, testCount, testClicker)
+        makeCompounderButton(testCompounderButton, testCompounderCount, testCompounderPrice, testClickValue, testCount, testClicker)
     })
 
     describe("updateCounter", function(){
