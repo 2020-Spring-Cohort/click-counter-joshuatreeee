@@ -6,8 +6,15 @@
     padding: 0;
 }
 
-html{
+html {
     text-align: center;
+}
+
+body {
+    background-image: url('/img/milk.jpg');
+    background-position: bottom left;
+    background-attachment: fixed;
+    background-size: cover;
 }
 
 header {
@@ -36,7 +43,7 @@ nav a:hover {
     background-color: black;
 }
 
-.about{
+.about {
     font-family: 'Luckiest Guy';
     position: absolute;
     width: 350px;
@@ -49,25 +56,26 @@ nav a:hover {
     border-radius: 350px;
 }
 
-.about a{
+.about a {
     text-decoration: none;
     color: #3F3047;
 }
 
-#cookieButton{
+#cookieButton {
     text-decoration: none;
+    background: none;
     border: 0;
 }
 
-#cookieCount{
+#cookieCount {
     font-size: 3em;
 }
 
-#cookieElement p, #cookieValue{
+#cookieElement p, #cookieValue {
     font-size: 1.5em;
 }
 
-#interactButtons{
+#interactButtons {
     display: grid;
     width: 700px;
     margin: 0 auto;
@@ -75,7 +83,7 @@ nav a:hover {
     grid-template-rows: 200px 200px 100px;
 }
 
-#cookieElement{
+#cookieElement {
     grid-row-start: 1;
     grid-row-end: -1;
 }
@@ -92,7 +100,7 @@ nav a:hover {
     border-radius: 25px;
 }
 
-#companionCount, #compounderCount, #companionCost, #compounderCost{
+#companionCount, #compounderCount, #companionCost, #compounderCost {
     text-align: left;
 }
 
