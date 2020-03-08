@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Definitely Not Cookie Clicker</title>
+    <link rel="stylesheet" href="/src/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lalezar|Luckiest+Guy&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -12,20 +14,21 @@
             <a onclick="showAboutCompany()" id="aboutCompanyLink">About We Can Code IT</a>
             <a onclick="showAboutJosh()" id="aboutJoshLink">About The Coder</a>
         </nav>
+        <h1>Definitely Not Cookie Clicker</h1>
     </header>
     
-    <section id="about-Josh" hidden>
+    <section id="about-Josh" class="about" hidden>
         <p>Josh Yang is a software developer studying full-stack web development in Cleveland, Ohio! All of what you see on this page has been coded by him, by hand.</p>
         <a href="https://joshuatreeee.github.io/">Here's a link to his portfolio!</a>
         <a href="https://github.com/joshuatreeee">Here's a link to his GitHub profile!</a>
     </section>
 
-    <section id="about-Company" hidden>
+    <section id="about-Company" class="about" hidden>
         <p>We Can Code IT is a five-star coding boot camp dedicated to teaching its students the skills needed to land a job in the world of technology. For more information, please visit <a href="https://wecancodeit.org/diversity-inclusion-in-tech-coding-bootcamp/">this link</a>.</p>
     </section>
 
     <section>
-        <button onclick="enableCompounderButton(); enableCompanionButton()" id="cookieButton">COOKIE</button>
+        <button onclick="enableCompounderButton(); enableCompanionButton()" id="cookieButton"><img src="/img/cookie.jpg" alt="Cookie!"></button>
         <div id="cookieCount">0</div>
         <p>Cookie Multiplier:</p>
         <div id="cookieValue">1</div>

@@ -1,0 +1,63 @@
+* {
+    font-family: 'Lalezar', 'Luckiest Guy', sans-serif;
+    line-height: 1.618em;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+    background-image: url("/img/cookies.jpg");
+    background-size: 100px;
+}
+
+nav a {
+    color: #000;
+    text-decoration: none;
+    padding: .8em 2em;
+    margin: .5em;
+    border-radius: 25px;
+}
+
+nav a:hover {
+    color: white;
+    background-color: black;
+}
+
+.about{
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    padding: 70px;
+    left: 50%;
+    margin-left: -175px;
+    background-color: rgba(255, 213, 154, .8);
+    border: 1px solid sienna;
+    border-radius: 350px;
+}
+
+.about a{
+    text-decoration: none;
+    color: #3F3047;
+}
+
+#cookieButton{
+    text-decoration: none;
+    border: 0;
+}
+
+#cookieCount{
+    font-size: 3em;
+}
+
+#companionElement, #compounderElement{
+    float: right;
+}
